@@ -1,24 +1,24 @@
-import React, { useState, useEffect } from 'react';
-import { withRouter } from 'react-router-dom';
-import classnames from 'classnames';
+import React, { useState } from "react";
+import { withRouter } from "react-router-dom";
+import classnames from "classnames";
 
 const Search = (props) => {
-  const [platform, setPlatform] = useState('psn');
-  const [gamertag, setGamertag] = useState('');
-  const [error, setError] = useState('');
+  const [platform, setPlatform] = useState("psn");
+  const [gamertag, setGamertag] = useState("");
+  const [error, setError] = useState("");
 
   const handleValidation = () => {
     let formIsValid = true;
 
     if (!gamertag) {
       formIsValid = false;
-      setError('Insert a gamertag');
+      setError("Insert a gamertag");
       console.log(error);
     }
     return formIsValid;
   };
 
-  const onSubmit = e => {
+  const onSubmit = (e) => {
     e.preventDefault();
 
     if (handleValidation()) {
@@ -26,11 +26,11 @@ const Search = (props) => {
     }
   };
 
-  const onChangePlat = e => {
+  const onChangePlat = (e) => {
     setPlatform(e.target.value);
-  }
+  };
 
-  const onChangeTag = e => {
+  const onChangeTag = (e) => {
     setGamertag(e.target.value);
   };
 
@@ -41,11 +41,7 @@ const Search = (props) => {
         <form onSubmit={onSubmit}>
           <div className="form-group">
             <label for="platform">Platform</label>
-            <select
-              platform={platform}
-              onChange={onChangePlat}
-              name="platform"
-            >
+            <select platform={platform} onChange={onChangePlat} name="platform">
               <option value="psn">PlayStation</option>
               <option value="xbl">Xbox</option>
               <option value="origin">Origin</option>
@@ -61,12 +57,13 @@ const Search = (props) => {
             <input
               type="text"
               name="gamertag"
-              className={classnames({ 'is-invalid': error })}
+              className={classnames({ "is-invalid": error })}
               placeholder="Origin ID, Xbox Live gamertag, PSN ID, etc"
               value={gamertag}
               onChange={onChangeTag}
             />
             <span className="error">{error}</span>
+            <p>Example: Gamertag 'transmastar' on 'Origin' platform</p>
           </div>
           <div className="form-group">
             <input type="submit" value="Submit" className="btn" />
@@ -74,7 +71,7 @@ const Search = (props) => {
         </form>
       </section>
     </>
-  )
+  );
 };
 
 export default withRouter(Search);

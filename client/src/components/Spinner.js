@@ -1,11 +1,10 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import PropTypes from 'prop-types';
-import logo from '../assets/logo.png';
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
+import logo from "../assets/logo.png";
 
 class Spinner extends Component {
   render() {
-    const { err } = this.props;
     return (
       <div className="container">
         <img src={logo} alt="logo" />
@@ -17,13 +16,13 @@ class Spinner extends Component {
             <Link to="/">Go Back</Link>
           </div>
         ) : null}
-      </div >
+      </div>
     );
-  };
-};
+  }
+}
 
 Spinner.propTypes = {
-  error: PropTypes.string
+  error: PropTypes.string,
 };
 
 export default Spinner;
